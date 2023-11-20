@@ -6,8 +6,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #CC66FF; /* Magenta */
-    font-family: Arial, sans-serif;
+    background-color: #fafafa; /* Magenta */
+    background-image: url('https://www.transparenttextures.com/patterns/brick-wall.png'); /* Subtle brick wall pattern */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .header {
     display: flex;
@@ -16,9 +17,8 @@ body {
     position: absolute;
     top: 0;
     background-color: white;
-    color: #AA44CC;
+    color: #3498db;
     width: -webkit-fill-available;
-
     text-align: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -27,20 +27,25 @@ body {
 
 .header h1 {
     margin: 0;
-    color: #AA44CC;
-    font-size: 24px;
+    color: #ff7f00; /* Dark gray-blue header text */
+    font-size: 30px;
 }
 
 .container {
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff; /* White container background */
+    padding: 50px;
+    border-radius: 8px;
+    max-width: 900px;
+    margin: 10% auto;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    color: #CC66FF; /* Magenta */
+    color: #ff7f00; /* Dark gray-blue header text */
+    font-size: 100px;
+    margin-top: 2px;
+    margin-bottom: 30px;
 }
 
 p {
@@ -50,7 +55,7 @@ p {
 .join-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #9933BB; /* Magenta */
+    background-color: #3498db; /* Magenta */
     color: white;
     border: none;
     border-radius: 5px;
@@ -60,11 +65,11 @@ p {
 }
 
 .join-button:hover {
-    background-color: #AA44CC; /* Slightly darker shade on hover */
+    background-color: #4a607f; /* Slightly darker shade on hover */
 }
 .footer {
     /* background-color: #333; */
-    background-color: #AA44CC;
+    background-color: #4a607f;
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -152,17 +157,18 @@ input[type="password"] {
 .signup-button {
     padding: 10px 20px;
     margin-right: 7px;
-    background-color: #9933BB; /* Primary color */
-    color: #fff; /* Text color */
+    background-color: #ffd700; /* Gold color */
+    color: #333; /* Text color */
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .signup-button:hover {
-    background-color: #AA44CC; /* Hover color */
+    background-color: #ffc200; /* Darker gold color on hover */
+    color: #333; /* Text color on hover */
 }
 .fade-in {
     animation: fadeIn 0.5s ease-in-out;
@@ -222,19 +228,19 @@ input[type="password"] {
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #CC66FF; /* Magenta */
-        font-family: Arial, sans-serif;
+        background-color: #fafafa; /* Magenta */
+        background-image: url('https://www.transparenttextures.com/patterns/brick-wall.png'); /* Subtle brick wall pattern */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .header {
         display: flex;
         justify-content: space-between;
-        padding: 10px 5px;
+        padding: 10px 30px;
         position: absolute;
         top: 0;
         background-color: white;
-        color: #AA44CC;
+        color: #3498db;
         width: -webkit-fill-available;
-    
         text-align: center;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
@@ -243,22 +249,25 @@ input[type="password"] {
     
     .header h1 {
         margin: 0;
-        color: #AA44CC;
-        font-size: 24px;
+        color: #ff7f00; /* Dark gray-blue header text */
+        font-size: 30px;
     }
     
     .container {
-        /* position: absolute;
-        top:0; */
-        text-align: center;
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.8);
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: #ffffff; /* White container background */
+        padding: 50px;
+        border-radius: 8px;
+        max-width: 900px;
+        margin: 10% auto;
+        text-align: left;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     h1 {
-        color: #CC66FF; /* Magenta */
+        color: #ff7f00; /* Dark gray-blue header text */
+        font-size: 100px;
+        margin-top: 2px;
+        margin-bottom: 30px;
     }
     
     p {
@@ -268,7 +277,7 @@ input[type="password"] {
     .join-button {
         display: inline-block;
         padding: 10px 20px;
-        background-color: #9933BB; /* Magenta */
+        background-color: #3498db; /* Magenta */
         color: white;
         border: none;
         border-radius: 5px;
@@ -278,11 +287,11 @@ input[type="password"] {
     }
     
     .join-button:hover {
-        background-color: #AA44CC; /* Slightly darker shade on hover */
+        background-color: #4a607f; /* Slightly darker shade on hover */
     }
     .footer {
         /* background-color: #333; */
-        background-color: #AA44CC;
+        background-color: #4a607f;
         color: white;
         text-align: center;
         padding: 10px 0;
@@ -366,12 +375,28 @@ input[type="password"] {
     .btn:hover {
         background-color: #d177ef;
     }
+   /* CSS for the Premium button */
+   .premium-button {
+    padding: 10px 20px;
+    margin-right: 7px;
+    background-color: #ffd700; /* Primary color */
+    color: #000000; /* Text color */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.premium-button:hover {
+    background-color: #ffc200; /* Hover color */
+
     /* CSS for the Signup button */
     .signup-button {
         padding: 10px 20px;
         margin-right: 7px;
-        background-color: #9933BB; /* Primary color */
-        color: #fff; /* Text color */
+        background-color: #ffd700; /* Primary color */
+        color: #000000; /* Text color */
         border: none;
         border-radius: 5px;
         font-size: 16px;
@@ -380,7 +405,7 @@ input[type="password"] {
     }
     
     .signup-button:hover {
-        background-color: #AA44CC; /* Hover color */
+        background-color: #ffc200; /* Hover color */
     }
     .fade-in {
         animation: fadeIn 0.5s ease-in-out;
@@ -411,4 +436,5 @@ input[type="password"] {
     
 
 
+}
 }

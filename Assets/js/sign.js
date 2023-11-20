@@ -3,6 +3,7 @@
 // Get the Sign Up modal and buttons
 const modal = document.getElementById("signupModal");
 const inmodal = document.getElementById("signinModal");
+const prmodal = document.getElementById("premModal");
 const openModalBtn = document.getElementById("openModalBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
 
@@ -41,6 +42,7 @@ window.addEventListener("click", (e) => {
 const loginPrompt = document.getElementById("loginPrompt");
 // Get the Sign In modal and buttons
 const inModal = document.getElementById("signinModal");
+const prModal = document.getElementById("premModal");
 const openInModalBtn = document.getElementById("openInModalBtn");
 const closeINModalBtn = document.getElementById("closeInModalBtn");
 
@@ -57,6 +59,12 @@ openInModalBtn.addEventListener("click", () => {
   inModal.style.display = "block";
 
   inModal.classList.add("fade-in");
+});
+
+openPremModalBtn.addEventListener("click", () => {
+  prModal.style.display = "block";
+
+  prModal.classList.add("fade-in");
 });
 
 // Close the modal when the close button or outside the modal is clicked

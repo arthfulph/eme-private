@@ -1,52 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Omegle</title>
-        <link rel="stylesheet" href="/css/style.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <div class="container">
-                    <img class="logo" src="/img/Logo.png" alt="">
-                    <h2>Talk to stranger</h2>
-                    <div class="online-status">5000+ online now</div>
-                </div>
-            </nav>
-        </header>
-        <main class="video_chat_main_container">
-            <div class="video_chat_container" style="justify-content: center;align-items: center;background-color: lightblue;">
-                <div class="video-tag-container" style="display: none;">
-                    <div class="videos">
-                        <video class="video-player" id="user-1" autoplay="autoplay" playsinnline="playsinnline"></video>
-                        <video class="video-player" id="user-2" style="border-top: 2px solid white;" autoplay="autoplay" playsinnline="playsinnline"></video>
-                    </div>
-                </div>
-                <div class="chat-container">
-                    <div class="chat-text-container">
-                        <p>You are now chatting with a random stranger</p>
-                        <p>You both speak the same language - English</p>
-                        <hr class="horizontal-divider">
-                        <p class="chat-text-area"></p>
-                    </div>
-                    <div class="next-chat-container">
-                        <div class="next-chat">
-                            <div>Next</div>
-                        </div>
-                        <div class="type-message">
-                            <textarea name="" id="msg-input" cols="25" rows="5"></textarea>
-                        </div>
-                        <div class="msg-send-button">Send</div>
-                    </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>emegle</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"
+        integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: rgb(255, 127, 0);
+            padding: 10px;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .premium-button {
+            padding: 10px 20px;
+            background-color: #ffe600; /* Gold color */
+            color: #000; /* Black text color */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .premium-button:hover {
+            background-color: #ffd700; /* Brighter gold on hover */
+        }
+        /* Add the following styles to change button colors to blue */
+        .next-chat div,
+        .msg-send-button {
+            background-color: rgb(30, 175, 254);
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .next-chat div:hover,
+        .msg-send-button:hover {
+            background-color: rgb(30, 175, 254);
+        }
+
+        /* Add the following styles for mobile responsiveness */
+        @media screen and (max-width: 768px) {
+            .video_chat_container {
+                flex-direction: column;
+            }
+
+            .video-tag-container {
+                order: 2;
+            }
+
+            .chat-container {
+                order: 1;
+            }
+
+            .chat-text-container,
+            .next-chat-container {
+                width: 100%;
+            }
+
+            .next-chat-container {
+                box-sizing: border-box;
+                padding: 10px;
+            }
+
+            .next-chat,
+            .type-message,
+            .msg-send-button {
+                width: 100%;
+                box-sizing: border-box;
+                margin-top: 10px;
+            }
+
+            .type-message textarea {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <button class="premium-button" onclick="redirectToHome()"><b>GO BACK</b></button>
+            <script>
+                function redirectToHome() {
+                    window.location.href = "/";
+                }
+            </script>
+        </div>
+    </header>    
+    <main class="video_chat_main_container">
+        <div class="video_chat_container"
+            style="justify-content: center; align-items: center; background-color: white;">
+            <div class="video-tag-container" style="display: none;">
+                <div class="videos">
+                    <video class="video-player" id="user-1" autoplay="autoplay" playsinline="playsinline"></video>
+                    <video class="video-player" id="user-2" style="border-top: 2px solid white;"
+                        autoplay="autoplay" playsinline="playsinline"></video>
                 </div>
             </div>
-        </main>
-    </body>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+            <div class="loading-overlay">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Pairing with a user...</div>
+              </div>
+            <div class="chat-container">
+                <!-- ... existing HTML content ... -->
+
+                <div class="chat-text-container">
+                    <!-- Add a paragraph to display the initial connection message -->
+                    <p class="initial-connection-message" style="display: none;">You are now chatting with a random stranger</p>
+                    <hr class="horizontal-divider">
+                    <!-- Add a div to display the ongoing connection messages -->
+                    <div class="chat-text-area"></div>
+                </div>
+
+                <!-- ... existing HTML content ... -->
+
+                <div class="next-chat-container">
+                    <div class="next-chat">
+                        <div>Next</div>
+                    </div>
+                    <div class="type-message">
+                        <textarea name="" id="msg-input" cols="25" rows="5"></textarea>
+                    </div>
+                    <div class="msg-send-button">Send</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="/js/index.js"></script>
+    <script>
+        // Function to set and display common interest
+        function displayCommonInterest(interest) {
+            const commonInterestSpan = document.getElementById("common-interest-span");
+            commonInterestSpan.textContent = interest;
+            document.querySelector(".common-interest-message").style.display = "block";
+        }
+
+        // Example: Call displayCommonInterest function with the common interest value
+        // Replace 'yourCommonInterestValue' with the actual common interest value
+        displayCommonInterest('yourCommonInterestValue');
+    </script>
+</body>
+<br>
+<div class="footer">
+    &copy; 2023 Emegle. All rights reserved. 
+</div>
 
 </html>

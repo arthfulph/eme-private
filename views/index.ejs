@@ -1,35 +1,128 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="/css/landing.css">
-    </head>
-    <body>
-        <div class="header" style="display: flex;">
-            <h1>Talk With</h1>
-            <!-- HTML for the button -->
-            <div>
-                <button type="button" id="openModalBtn" class="signup-button">Signup</button>
-                <button type="button" id="openInModalBtn" class="signup-button">Sign In</button>
-            </div>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/landing.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
 
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: rgb(255, 127, 0);
+            padding: 10px;
+        }
 
+        .container {
+            text-align: center;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .interest-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #interest-input {
+            padding: 8px;
+        }
+
+        .submit-interest {
+            background-color: rgb(30, 175, 254);
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .submit-interest:hover {
+            background-color: rgb(30, 175, 254);
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Styling for the premium button */
+        .premium-button {
+            padding: 10px 20px;
+            background-color: #ffe600; /* Gold color */
+            color: #000; /* Black text color */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .premium-button:hover {
+            background-color: #ffd700; /* Brighter gold on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="/"> <!-- Make "emegle" clickable and link to the homepage -->
+            <h1>emegle</h1>
+        </a>
+        <div>
+            <button class="premium-button" onclick="redirectToPremium()"><b>GO PREMIUM</b></button>
+            <script>
+                function redirectToPremium() {
+                    window.location.href = "/premium";
+                }
+            </script>
         </div>
-        <div class="container">
+    </div>
+    <div class="container">
+        <h1>emegle</h1>
+        <p><b>Connect with random users around the Philippines! </b> </p>
+        <p>Emegle is a web platform that enables users to engage in real-time conversations with strangers on the internet, completely for free and exclusively for the Philippines!
+        Experience the thrill of meeting new people and discovering shared interests in a fun and interactive way.</p>
+        <p><i>emegle is a web platform, and you don't need to download any applications to access any of the features</i></p>
+        <a href="/text_chat">
+            <button class="join-button">Start Chatting Now!</button>
+        </a>
+        <button type="button" id="openModalBtn" class="signup-button">Sign In</button>
+    </div>
+    <div class="footer">
+        &copy; 2023 Emegle. All rights reserved. 
+    </div>
 
-            <h1>Welcome to Talk With XYZ!</h1>
-            <p>Connect, communicate, and talk with ease.</p>
-            <a href="/video_chat">
-                <button class="join-button">Start Chat</button>
-            </a>
-        </div>
-        <div id="messageContainer" class="message-container"></div>
-        <div class="footer">
-            &copy; 2023 VideoChatApp. All rights reserved.
-        </div>
-        <%- include('include/signupModal.ejs') %>
-        <%- include('include/signInModal.ejs') %>
+    <%- include('include/signupModal.ejs') %>
+    <%- include('include/signInModal.ejs') %>
 
-        <script src="/js/sign.js"></script>
-    </body>
+    <script src="/js/sign.js"></script>
+    <script>
+        function submitInterests() {
+            const interestsInput = document.getElementById('interest-input');
+            const interests = interestsInput.value.split(',').map(interest => interest.trim());
+
+            // Redirect to the text chat page with the interests as query parameters
+            const interestsQueryString = interests.map((interest, index) => `interest${index + 1}=${interest}`).join('&');
+            window.location.href = `/text_chat?${interestsQueryString}`;
+        }
+    </script>
+</body>
+
 </html>

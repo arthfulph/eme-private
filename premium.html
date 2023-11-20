@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/premium.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: rgb(255, 127, 0);
+            padding: 10px;
+        }
+
+        .container {
+            text-align: center;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .premium-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .premium-button {
+            padding: 15px 30px;
+            background-color: #ffd700; /* Gold color */
+            color: #333; /* Text color */
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .premium-button:hover {
+            background-color: #ffc200; /* Darker gold color on hover */
+            color: #333; /* Text color on hover */
+        }
+
+        .feature-list {
+            text-align: left;
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .feature-list h2 {
+            color: #333;
+            text-align: center;
+            width: 100%;
+        }
+
+        .feature-list ul {
+            list-style-type: none;
+            padding: 0;
+            width: 48%; /* Adjust width as needed */
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <title>Premium Page</title>
+</head>
+
+<body>
+    <div class="header">
+        <h1>emegle</h1>
+        <button class="premium-button" onclick="redirectToHome()"><b>GO BACK</b></button>
+        <script>
+            function redirectToHome() {
+                window.location.href = "/";
+            }
+        </script>
+    </div>
+    <div class="container">
+        <h1>Premium Features</h1>
+        <p><b>Upgrade to emegle Premium and enjoy exclusive benefits to take your chatting experience to the next level!</b></p>
+        <p>This is a solo project and by upgrading, you will support the growth of Emegle and unlock the following
+        awesome features as token of gratitude!</p>
+        <div class="feature-list">
+            <ul>
+                <h2>Free Tier</h2>
+                <li>✔ Access to random chat</li>
+                <li>✔ Community support</li>
+            </ul>
+            <ul>
+                <h2>Premium Tier</h2>
+                <li>✔ Access to random chat</li>
+                <li>✔ <b>Access to interest-based chat search</b></li>
+                <li>✔ <b>Access to video chats <i>(RELEASING IN THE NEXT UPDATE)</i></b></li>
+                <li>✔ <b>Gold Name in chat <i>(RELEASING IN THE NEXT UPDATE)</i></b></li>
+                <li>✔ <b>Able to save your chat sessions <i>(COMING SOON)</i></b></li>
+                <li>✔ Exclusive premium support</li>
+            </ul>
+        </div>
+        <p>All payment proceeds to the development of the website, expenses related
+            to establish the free service, and introduction of new features, for generous donations
+        please contact the administrator in the email provided below</p>
+    <br></br>
+    <p>-----------------------------------------------------------------------------------</p>
+    <br></br>
+    <h2>HOW TO UPGRADE TO EMEGLE PREMIUM?</h2>
+    <p>Mode of Payment: GCASH, Paypal</p>
+    <div class="feature-list">
+        <ul>
+        <h2>GCASH Payment</h2>
+        <li>1. Open the Gcash App</li>
+        <li>2. Tap Send Money</li>
+        <li>3. Tap Express Send</li>
+        <li>4. Type in the Number <u>09614852934</u> and the PHP 250.00 for the amount</li>
+        <li>5. In the Message field, type in your email address then Tap Send</li>
+        </ul>
+        <ul>
+        <h2>Paypal Payment</h2>
+        <li>1. Open the Paypal App or Browser</li>
+        <li>2. Click on the Send Money</li>
+        <li>3. In the Send payment to field type in <u>jackbeinston@gmail.com</u></li>
+        <li>4. Choose your preferred currency and input PHP 260.00 <u>(+10 fee)</u> for the amount</li>
+        <li>5. In the Message field, type in your email address then Tap Send.</li>
+        </ul>
+    </div>
+    <p><i>Make sure to double check all of the details before confirming the payment, no refund will be
+        granted for any incorrect/incomplete/missing details in the Message field in any payment channels
+    </i></p>
+    <p><i>You will receive a confirmation email within 24 hours from the time of your payment, for support 
+        <u>arthful.productions@gmail.com</u>
+    </i></p>
+    <p>-----------------------------------------------------------------------------------</p>
+    <br></br>
+    </div>
+    <div class="footer">
+        &copy; 2023 Emegle. All rights reserved.
+    </div>
+    <%- include('include/signupModal.ejs') %>
+    <%- include('include/signInModal.ejs') %>
+
+    <script src="/js/sign.js"></script>
+</body>
+
+</html>

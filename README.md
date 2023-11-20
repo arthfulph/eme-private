@@ -8,3 +8,5 @@ Run the command
 npm Install
 #
 npm start
+# emegle
+# eme-private

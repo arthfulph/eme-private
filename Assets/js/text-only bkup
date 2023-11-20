@@ -93,7 +93,7 @@ function createPeerConnection() {
 
 function sendData() {
   const msgData = msgInput.value;
-  chatTextArea.innerHTML += `<div style='margin-top:2px; margin-bottom:2px;'><b style= 'color: blue;'>Me: </b>${msgData}</div>`;
+  chatTextArea.innerHTML += `<div style='margin-top:2px; margin-bottom:2px;'><b>Me: </b>${msgData}</div>`;
   onSendChannelStateChange();
   sendChannel.send(msgData);
   msgInput.value = "";
@@ -109,7 +109,7 @@ function receiveChannelCallback(event) {
 
 function onReceiveChannelMessageCallback(event) {
   console.log("Received Message");
-  chatTextArea.innerHTML += `<div style='margin-top:2px; margin-bottom:2px;'><b style='color: red;'>Stranger: </b>${event.data}</div>`;
+  chatTextArea.innerHTML += `<div style='margin-top:2px; margin-bottom:2px;'><b>Stranger: </b>${event.data}</div>`;
 }
 
 function onReceiveChannelStateChange() {
@@ -241,22 +241,40 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
-// Use visibilitychange event to handle page visibility changes
-document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "hidden") {
-    // Page is not visible, user is likely navigating away or refreshing
-    socket.emit("remoteUserClosed", {
+window.addEventListener("unload", () => {
+  socket.emit("remoteUserClosed", {
+    username: username,
+    remoteUser: remoteUser,
+  });
+});
+
+function closeConnection() {
+  chatTextArea.innerHTML = "";
+  const remoteStream = peerConnection.getRemoteStreams()[0];
+  if (remoteStream) {
+    remoteStream.getTracks().forEach((track) => track.stop());
+  }
+
+  peerConnection.close()
+    .then(() => {
+      const remoteVid = document.getElementById("user-2");
+      if (remoteVid.srcObject) {
+        remoteVid.srcObject.getTracks().forEach((track) => track.stop());
+        remoteVid.srcObject = null;
+      }
+    })
+    .then(() => socket.emit("remoteUserClosed", {
       username: username,
       remoteUser: remoteUser,
-    });
-  }
-});
+    }))
+    .then(() => fetchNextUser(remoteUser))
+    .catch(error => console.error("Error closing connection:", error));
+}
 
 document.querySelector(".next-chat").addEventListener("click", () => {
   chatTextArea.innerHTML = "";
   console.log("From Next Chat button");
   closeConnection();
-  socket.emit("disengageUser", username);
 });
 
 function showLoadingOverlay() {
